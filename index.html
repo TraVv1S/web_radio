@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Автовоспроизведение аудиопотока</title>
+</head>
+<body>
+    <audio id="audioPlayer" controls>
+        <source src="https://myradio24.org/78811_64" type="audio/mpeg">
+        Ваш браузер не поддерживает воспроизведение аудио.
+    </audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const audio = document.getElementById("audioPlayer");
+            console.log('10');
+            setTimeout(() => {
+                audio.play(); // Автоматически начать воспроизведение при загрузке страницы
+            }, 10000);
+            
+        });
+    </script>
+</body>
+</html>
