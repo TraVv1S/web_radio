@@ -5,19 +5,36 @@
 </head>
 <body>
     <audio id="audioPlayer" controls>
-        <source src="https://myradio24.org/78811_64" type="audio/mpeg">
+        <source src="ссылка_на_аудиопоток.mp3" type="audio/mpeg">
         Ваш браузер не поддерживает воспроизведение аудио.
     </audio>
 
     <script>
+        const audio = document.getElementById("audioPlayer");
+        const audioSource = audio.querySelector("source");
+
+        // Функция для проверки состояния сети и перезапуска воспроизведения при восстановлении связи
+        function checkNetworkStatus() {
+            if (navigator.onLine) {
+                // Если есть связь, проверить, был ли аудиоплеер приостановлен и возобновить воспроизведение
+                if (audio.paused) {
+                    audio.play();
+                }
+            } else {
+                // Если связи нет, приостановить воспроизведение аудио
+                audio.pause();
+            }
+        }
+
+        // Добавить обработчик события online для мониторинга состояния сети
+        window.addEventListener("online", checkNetworkStatus);
+
+        // Добавить обработчик события offline для мониторинга состояния сети
+        window.addEventListener("offline", checkNetworkStatus);
+
+        // Автоматически начать воспроизведение при загрузке страницы
         document.addEventListener("DOMContentLoaded", function () {
-            const audio = document.getElementById("audioPlayer");
-            console.log('start');
-            setTimeout(() => {
-                console.log('play!');
-                audio.play(); // Автоматически начать воспроизведение при загрузке страницы
-            }, 10000);
-            
+            audio.play();
         });
     </script>
 </body>
