@@ -12,8 +12,9 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const audio = document.getElementById("audioPlayer");
-            console.log('10');
+            console.log('start');
             setTimeout(() => {
+                console.log('play!');
                 audio.play(); // Автоматически начать воспроизведение при загрузке страницы
             }, 10000);
             
